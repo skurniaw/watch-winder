@@ -1,0 +1,11 @@
+# Notes
+
+The daysPerMonth array is made for calculation of a so-called ultimateMin,
+which essentially adds minutes elapsed depending on the status of the real-
+time clock. See the getMonth and calcUltimateMin methods for a better idea
+of how this system works. 
+
+Note also that the stepper does not move in 'turns' but rather in discrete steps.
+
+- Sebastian K
+- 26 March 2019
