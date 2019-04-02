@@ -4,4 +4,4 @@ This is code for a mechanical watch winder for Arduino! This code imports librar
 
 Enjoy!
 
-- Sebastian K
+Sebastian K
