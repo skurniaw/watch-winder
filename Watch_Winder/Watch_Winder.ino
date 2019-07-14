@@ -1,5 +1,6 @@
 // Sebastian Kurniawan, Arduino 1.8.2
-// DIY Watch Winder, 2 Feb 2019
+// DIY Watch Winder, 14 Jul 2019
+// v 1.4
 
 // This program will turn a stepper motor a specified amount, after which it will
 // stop, delay itself for a specified time, then turn the stepper motor the same
@@ -28,8 +29,9 @@ long initMin = 0;
 long currentMin = 0;
 
 int daysPerMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+String monthNames[] = {"January" "February" "March" "April" "May" "June" "July" "August" "September" "October" "November" "December"};
 
-long spinDirection = -30000;
+long spinDirection = -80000;
 
 boolean spin = true;
 
@@ -56,7 +58,7 @@ void loop() {
   t = rtc.getTime();
   currentMin = calcUltimateMin(rtc.getMonthStr(), t.date, t.hour, t.min);
   
-  if (currentMin > (initMin + 30)){
+  if (currentMin > (initMin + 60)){
     stepper1.run();
   }
 
@@ -82,29 +84,9 @@ long calcUltimateMin(String month, int days, int hr, int minute) {
 // Takes a string specifying the month and returns a integer corresponding to each month.
 // January = 0, February = 1, ... , December = 11
 int getMonth(String month) {
-  if (month.equals("January")) {
-    return 0;
-  } else if (month.equals("February")) {
-    return 1;
-  } else if (month.equals("March")) {
-    return 2; 
-  } else if (month.equals("April")) {
-    return 3;
-  } else if (month.equals("May")) {
-    return 4; 
-  } else if (month.equals("June")) {
-    return 5;
-  } else if (month.equals("July")) {
-    return 6; 
-  } else if (month.equals("August")) {
-    return 7;
-  } else if (month.equals("September")) {
-    return 8; 
-  } else if (month.equals("October")) {
-    return 9; 
-  } else if (month.equals("November")) {
-    return 10; 
-  } else { // if (month = December)
-    return 11; 
+  for (int i = 0; i < 11; i++) {
+    if (month == monthNames[i]) {
+      return i;
+    }
   }
 }
